@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
-import { ArrowRight, BookOpen, CheckCircle2, Clock3, Download, FileText, GraduationCap, House, Layers, LoaderCircle, Menu, PlaySquare, Search, ShieldCheck, ShoppingBag, Sparkles, Star, UserRound, X } from "lucide-react";
+import { ArrowRight, BookOpen, Download, FileText, GraduationCap, House, Layers, LoaderCircle, Menu, PlaySquare, Search, ShieldCheck, ShoppingBag, Sparkles, Star, UserRound, X } from "lucide-react";
 
 type CourseCard={id:string;title:string;category:string;price:number;description:string;badge:string;thumbnail:string|null;color:string};
 const categoryTiles=[
