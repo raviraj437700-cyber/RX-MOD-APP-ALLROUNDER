@@ -1,0 +1,4 @@
+"use client";
+import Link from "next/link";
+import { ArrowLeft, ShieldCheck } from "lucide-react";
+export default function AdminEntryPage(){return <main className="auth-page"><div className="auth-top"><Link href="/" className="auth-back"><ArrowLeft size={17}/> RX MOD home</Link></div><section className="auth-card"><div className="auth-mark"><ShieldCheck size={25}/></div><div className="auth-eyebrow">PRIVATE MANAGEMENT</div><h1>Admin panel.</h1><p className="auth-subtitle">This area is reserved for the RX MOD administrator.</p><p className="auth-message auth-warning">Admin sign-in and server-side role checks are not connected yet. This page is only an entry screen; it does not grant admin access or modify course/payment data.</p><Link className="btn btn-primary auth-submit admin-entry-btn" href="/login">Go to account login</Link></section></main>}
