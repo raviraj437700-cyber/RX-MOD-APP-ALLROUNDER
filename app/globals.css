@@ -107,3 +107,5 @@
 .support-admin-chat{min-width:0;display:flex;flex-direction:column;gap:8px}
 .support-admin-chat .support-messages{flex:1;min-height:300px;max-height:550px}
 @media(max-width:650px){.admin-shortcuts{display:grid;grid-template-columns:1fr}.support-admin-layout{grid-template-columns:1fr}.support-thread-list{max-height:190px}.lesson-row{align-items:flex-start;flex-wrap:wrap}.lesson-row .btn{margin-left:50px}.support-compose{align-items:stretch}.support-compose .btn{padding:10px}.lesson-library,.support-panel{padding:13px}}
+
+.checkout-reference-label{display:grid;gap:8px;margin:18px 0;color:#35445e;font-size:13px;font-weight:700}.checkout-reference-label .auth-input{width:100%}
