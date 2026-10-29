@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ArrowLeft, CheckCircle2, Copy, CreditCard, LoaderCircle, ShieldCheck } from "lucide-react";
@@ -7,7 +7,7 @@ import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
 type Course = { id:string; title:string; description:string|null; price_paise:number; is_published:boolean };
 type Setting = { key:string; value:string|null };
-export default function CheckoutPage(){
+function CheckoutContent(){
  const params=useSearchParams();
  const courseId=params.get("course");
  const [course,setCourse]=useState<Course|null>(null);
@@ -24,3 +24,5 @@ export default function CheckoutPage(){
  const rupees=(course?.price_paise||0)/100;
  return <main className="auth-page"><div className="auth-top"><Link href="/" className="auth-back"><ArrowLeft size={17}/> RX MOD home</Link></div><section className="auth-card checkout-card"><div className="auth-mark"><CreditCard size={23}/></div><div className="auth-eyebrow">SECURE MANUAL CHECKOUT</div><h1>Get course access.</h1>{loading?<p className="auth-subtitle">Loading course details…</p>:!course?<div className="auth-message auth-error">Published course nahi mila. Homepage par wapas jaakar published course choose karo.</div>:<><p className="auth-subtitle">Review the course, pay using the admin QR, then submit your request for verification.</p><div className="checkout-summary"><span>Selected course</span><strong>{course.title}</strong><b>₹{rupees.toLocaleString("en-IN",{maximumFractionDigits:2})}</b></div><div className="checkout-qr"><h3>Only QR code payment available</h3>{qr?<img src={qr} alt="Admin UPI QR code" className="checkout-qr-image"/>:<div className="qr-placeholder"><CreditCard size={28}/><span>Admin QR code abhi set nahi hua</span><small>Admin Panel mein payment_qr_url setting add karo.</small></div>}<p>Payment karne se pehle QR par dikhne wala naam aur amount khud verify karna. Course access admin ke payment verify karne ke baad hi milega.</p></div>{adminContact&&<p className="checkout-contact">Admin se contact: <a href={"https://wa.me/"+adminContact.replace(/[^0-9]/g,"")} target="_blank" rel="noreferrer">{adminContact}</a></p>}<button className="btn btn-primary auth-submit" onClick={requestAccess} disabled={busy||!!requestId}>{busy?<><LoaderCircle size={16}/> Request bhej rahe hain…</>:requestId?<><CheckCircle2 size={16}/> Request submitted</>:"I have paid — request verification"}</button>{requestId&&<div className="checkout-request"><b>Payment request ID</b><code>{requestId}</code><button type="button" onClick={()=>navigator.clipboard?.writeText(requestId)}><Copy size={14}/> Copy ID</button></div>}{success&&<p className="auth-message auth-success" role="status">{success}</p>}</>}{error&&<p className="auth-message auth-error" role="alert">{error}</p>}<p className="auth-footnote"><ShieldCheck size={13}/> Never share your account password or OTP with anyone.</p></section></main>
 }
+
+export default function CheckoutPage(){return <Suspense fallback={<main className="auth-page"><section className="auth-card">Loading checkout…</section></main>}><CheckoutContent/></Suspense>}
