@@ -1,11 +1,12 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, LockKeyhole, Phone, UserRound } from "lucide-react";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const [mode, setMode] = useState<"login" | "signup">("login");
+  useEffect(() => { if (new URLSearchParams(window.location.search).get("mode") === "signup") setMode("signup"); }, []);
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
