@@ -114,7 +114,7 @@ export default function LoginPage() {
         </div>
         <form onSubmit={submit} className="auth-form">
           {mode === "signup" && <label>Your name<div className="auth-input"><UserRound size={17}/><input value={name} onChange={e => setName(e.target.value)} placeholder="Full name" required maxLength={80} autoComplete="name"/></div></label>}
-          <label>Email address<div className="auth-input"><Mail size={17}/><input value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" type="email" autoComplete="email" required/></div></label>
+          <label>Email address<div className="auth-input"><Mail size={17}/><input value={email} onChange={e => { setEmail(e.target.value); if (error) setError(""); }} placeholder="you@example.com" type="text" inputMode="email" autoCapitalize="none" spellCheck={false} autoComplete="email" required/></div></label>
           <label>Password<div className="auth-input"><LockKeyhole size={17}/><input value={password} onChange={e => setPassword(e.target.value)} placeholder="At least 8 characters" type="password" autoComplete={mode === "login" ? "current-password" : "new-password"} minLength={8} required/></div></label>
           <button className="btn btn-primary auth-submit" disabled={busy}>{busy ? "Please wait…" : mode === "login" ? "Log in" : "Create account"}</button>
         </form>
