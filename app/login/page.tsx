@@ -23,7 +23,7 @@ export default function LoginPage() {
       if (mode === "signup") {
         const { data, error: authError } = await supabase.auth.signUp({ phone: cleanPhone, password, options: { data: { display_name: name.trim() } } });
         if (authError) throw authError;
-        if (data.session) {
+        if (data.session && data.user) {
           await supabase.from("profiles").upsert({ id: data.user.id, phone: cleanPhone, display_name: name.trim() }, { onConflict: "id" });
           setMessage("Account ban gaya! Ab tum RX MOD use kar sakte ho.");
         } else { setMessage("Signup request ho gayi. Supabase Auth mein phone confirmation enabled hai, isliye pehle verification complete karni hogi. OTP ke bina signup ke liye Auth settings badalni padegi."); }
