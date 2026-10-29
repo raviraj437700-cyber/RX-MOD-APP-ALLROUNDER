@@ -65,7 +65,7 @@ export default function LoginPage() {
         if (result.data.user) {
           const profile = { id: result.data.user.id, display_name: String(result.data.user.user_metadata?.display_name || name || "").trim() || null, ...(method === "phone" ? { phone: cleanPhone } : (cleanPhone ? { phone: cleanPhone } : {})) };
           const { error: profileError } = await supabase.from("profiles").upsert(profile, { onConflict: "id" });
-          if (profileError) console.warn("Profile sync failed:", profileError.message);
+          if (profileError) throw new Error("Login ho gaya, lekin profile sync nahi hua: " + profileError.message + ". Dobara login try karo.");
           const next = new URLSearchParams(window.location.search).get("next");
           window.location.href = next?.startsWith("/") ? next : (result.data.user.app_metadata?.role === "admin" ? "/admin" : "/");
         }
