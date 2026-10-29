@@ -11,7 +11,8 @@ type Setting={key:string;value:any};
 const blankCourse={title:"",category_id:"",short_description:"",description:"",price:"0",is_published:false,is_featured:false};
 export default function AdminPage(){
  const [checking,setChecking]=useState(true),[isAdmin,setIsAdmin]=useState(false),[tab,setTab]=useState("courses"),[message,setMessage]=useState(""),[error,setError]=useState(""),[busy,setBusy]=useState(false);
- const [categories,setCategories]=useState<Category[]>([]),[courses,setCourses]=useState<Course[]>([]),[purchases,setPurchases]=useState<Purchase[]>([]),[settings,setSettings]=useState<Setting[]>([]);\n const [totalUsers,setTotalUsers]=useState(0),[totalSales,setTotalSales]=useState(0);
+ const [categories,setCategories]=useState<Category[]>([]),[courses,setCourses]=useState<Course[]>([]),[purchases,setPurchases]=useState<Purchase[]>([]),[settings,setSettings]=useState<Setting[]>([]);
+ const [totalUsers,setTotalUsers]=useState(0),[totalSales,setTotalSales]=useState(0);
  const [form,setForm]=useState({...blankCourse}),[editing,setEditing]=useState<string|null>(null),[newCategory,setNewCategory]=useState(""),[qrUrl,setQrUrl]=useState(""),[adminPhone,setAdminPhone]=useState(""),[qrUploadBusy,setQrUploadBusy]=useState(false);
  const sb=getSupabaseBrowserClient();
  const load=useCallback(async()=>{setError("");const {data:{user},error:authError}=await sb.auth.getUser();if(authError||!user){setIsAdmin(false);setChecking(false);return}const {data:sessionData}=await sb.auth.getSession();const role=sessionData.session?.user.app_metadata?.role; if(role!=="admin"){setIsAdmin(false);setChecking(false);return}setIsAdmin(true);
