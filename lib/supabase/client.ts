@@ -2,27 +2,18 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 let browserClient: SupabaseClient | null = null;
 
-/**
- * Browser-only Supabase client.
- * Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
- * in local .env.local and in your deployment environment.
- * Never put a service_role/secret key in NEXT_PUBLIC_* variables.
- */
-export function getSupabaseBrowserClient(): SupabaseClient | null {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+// Supabase publishable keys are intended for browser use. Database RLS remains mandatory.
+// Environment variables can override these public project settings in local/deployed environments.
+const PROJECT_URL = "https://fkkslrhiqgratcpotjif.supabase.co";
+const PROJECT_PUBLISHABLE_KEY = "sb_publishable_ZB8C0cEN9VyibLaShcFrfw_g60O217q";
 
-  if (!url || !key) return null;
-
+export function getSupabaseBrowserClient(): SupabaseClient {
   if (!browserClient) {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL || PROJECT_URL;
+    const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || PROJECT_PUBLISHABLE_KEY;
     browserClient = createClient(url, key, {
-      auth: {
-        persistSession: true,
-        autoRefreshToken: true,
-        detectSessionInUrl: true,
-      },
+      auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
     });
   }
-
   return browserClient;
 }
