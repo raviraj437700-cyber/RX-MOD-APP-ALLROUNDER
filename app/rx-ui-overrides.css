@@ -1,0 +1,193 @@
+/* RX MOD premium dark mobile UI — visual-only overrides; app logic is unchanged */
+:root{
+  --rx-bg:#080f1d;
+  --rx-surface:#101b2d;
+  --rx-surface-2:#14223a;
+  --rx-line:#263752;
+  --rx-text:#eef4ff;
+  --rx-muted:#9aabc5;
+  --rx-blue:#3478f6;
+  --rx-cyan:#19c6c1;
+}
+body{background:var(--rx-bg);color:var(--rx-text)}
+button,input,textarea,select{font-family:inherit}
+::selection{background:#3478f655;color:#fff}
+
+/* Customer storefront */
+.shop-home{background:var(--rx-bg);color:var(--rx-text);padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+.shop-header,.shop-welcome{background:linear-gradient(115deg,#0b1730 0%,#102d57 58%,#075b67 100%)}
+.shop-header{height:70px;padding:12px 18px;border-bottom:1px solid #ffffff0d}
+.shop-avatar,.shop-header-actions>a,.shop-header-actions>button{background:#ffffff10;border:1px solid #ffffff1c;color:#eaf2ff;transition:background .2s,transform .2s}
+.shop-avatar:hover,.shop-header-actions>a:hover,.shop-header-actions>button:hover{background:#ffffff20;transform:translateY(-1px)}
+.shop-brand>b{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:linear-gradient(145deg,#3b82f6,#16c6c0);box-shadow:0 7px 20px #1679e83b;font-size:17px}
+.shop-brand span{font-size:13px;letter-spacing:.2px}
+.shop-welcome{padding:18px 18px 22px;border-radius:0 0 28px 28px;box-shadow:0 18px 35px #0002}
+.shop-welcome h1{font-size:23px;letter-spacing:-.7px}
+.shop-welcome p{color:#c6d8f3;font-size:13px;margin:5px 0 16px}
+.shop-search{height:49px;background:#f8fbff;border:1px solid #ffffff3b;box-shadow:0 8px 24px #0002}
+.shop-search:focus-within{box-shadow:0 0 0 3px #60a5fa35}
+.shop-promo-wrap{padding:18px 15px 7px}
+.shop-promo{min-height:154px;padding:19px;border:1px solid #ffffff14;background:radial-gradient(circle at 86% 12%,#1e7b9c65,transparent 34%),linear-gradient(120deg,#101c35,#102c54 62%,#064e5a);box-shadow:0 14px 32px #0002}
+.shop-promo:after{width:185px;height:185px;right:-44px;top:-55px;background:#21c6c21c;border:1px solid #39d6d02a}
+.promo-eyebrow{color:#83f0e7}
+.shop-promo h2{font-size:18px;line-height:1.34}
+.shop-promo h2 strong{color:#8bc1ff}
+.shop-promo p{font-size:10px;color:#c0d2ec}
+.shop-promo button{background:linear-gradient(110deg,#3478f6,#15b8b4);box-shadow:0 5px 14px #116bd13b;padding:9px 14px}
+.promo-circle{background:linear-gradient(145deg,#3478f6,#14c9be);box-shadow:0 12px 30px #0004}
+.shop-categories,.shop-recommended{padding-left:16px;padding-right:16px}
+.shop-categories h2,.shop-section-title h2{color:#edf4ff;font-size:16px}
+.shop-category-row{gap:8px;margin-top:15px}
+.shop-category{color:#d6e2f6}
+.shop-category>span{max-width:55px;border:1px solid #ffffff1c;box-shadow:0 8px 18px #0002}
+.shop-category small{font-size:9px;color:#b4c3da}
+.shop-category.category-selected>span{outline-color:#60a5fa;box-shadow:0 0 0 4px #3478f61a,0 8px 18px #0003}
+.shop-section-title p{color:#93a6c2}
+.shop-section-title>button{background:#172641;border:1px solid #2a3b59;color:#dbe8ff}
+.shop-product-row{gap:12px}
+.shop-product-card{background:linear-gradient(160deg,#142138,#101a2c);border:1px solid #243651;box-shadow:0 10px 25px #0002;transition:transform .22s,border-color .22s,box-shadow .22s}
+.shop-product-card:hover{transform:translateY(-3px);border-color:#3c6eb5;box-shadow:0 16px 30px #0003}
+.shop-product-art{height:125px}
+.product-blue{background:linear-gradient(135deg,#10234a,#2563eb)}
+.product-teal{background:linear-gradient(135deg,#0b393d,#0e9b94)}
+.product-purple{background:linear-gradient(135deg,#302052,#7546d7)}
+.product-orange{background:linear-gradient(135deg,#592b24,#e87b36)}
+.shop-product-info{padding:12px 11px 13px}
+.shop-product-info>small{color:#91a4c0;font-size:10px}
+.shop-product-name{color:#f0f5ff;font-size:12px;min-height:36px}
+.shop-product-price b{color:#fff;font-size:16px}
+.shop-product-price span{color:#8fa2bf}
+.shop-buy-small{color:#80b3ff;font-size:11px}
+.shop-product-badge{background:#dbeafe;color:#1e40af}
+.shop-empty{background:#101b2d;border-color:#2a3b57;color:#9aabc5}
+.shop-empty h3{color:#f0f5ff}
+.shop-empty p{color:#9aabc5}
+.shop-empty a{color:#83b7ff}
+.shop-error{background:#321c2a;color:#ffb4bd;border:1px solid #68303f}
+.shop-menu{background:#111d30;border-color:#2a3b56;box-shadow:0 18px 45px #0006}
+.shop-menu a,.shop-menu button{color:#e4edfc}
+.shop-menu a:hover,.shop-menu button:hover{background:#1c2d49}
+.shop-bottom-nav{min-height:78px;padding:9px 8px calc(10px + env(safe-area-inset-bottom));background:#0b1424f5;border-top:1px solid #25344d;box-shadow:0 -10px 30px #0003}
+.shop-bottom-nav>a,.shop-bottom-nav>button{color:#8fa1bd}
+.shop-bottom-nav .shop-nav-active{color:#83b7ff}
+.shop-nav-center svg{border-color:#0b1424;box-shadow:0 6px 18px #0005}
+.shop-bottom-nav .shop-nav-center small{color:#8fa1bd}
+.shop-admin-fab{background:linear-gradient(110deg,#3478f6,#176aaf);box-shadow:0 9px 25px #0005;border:1px solid #6aa4ff4d}
+.modal-backdrop{background:#020817c9;backdrop-filter:blur(9px)}
+.course-modal{background:#101b2d!important;border:1px solid #2a3b57!important;color:#eef4ff!important;box-shadow:0 25px 90px #0009!important}
+.modal-close{background:#1b2a43!important;color:#dce9ff!important;border:1px solid #314665!important}
+.modal-body h2{color:#f2f6ff!important}
+.modal-body p{color:#a4b4cc!important}
+.course-category{color:#8bb8ff!important}
+.modal-price strong{color:#fff!important}
+.modal-disclaimer{color:#9db0cb!important}
+
+/* Login, account and checkout pages */
+.auth-page:not(.admin-page){min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#122b50 0%,#080f1d 48%,#060b14 100%);color:#edf4ff;padding-bottom:calc(28px + env(safe-area-inset-bottom))}
+.auth-top{max-width:900px}
+.auth-back{color:#b4c6e1}
+.auth-back:hover{color:#fff}
+.auth-card{background:linear-gradient(155deg,#111e32,#0d1728);border:1px solid #263853;border-radius:24px;color:#eef4ff;box-shadow:0 24px 70px #0003}
+.auth-mark{background:linear-gradient(140deg,#3478f6,#16bcb7);box-shadow:0 9px 25px #3478f63a;color:#fff}
+.auth-eyebrow{color:#81b5ff}
+.auth-card h1{color:#f5f8ff}
+.auth-subtitle,.auth-footnote{color:#9bacc5}
+.auth-form label{color:#c7d4e8}
+.auth-input{background:#0a1424;border:1px solid #2b3c57;color:#8fa6c8;border-radius:13px}
+.auth-input:focus-within{border-color:#4e8cf7;box-shadow:0 0 0 3px #3478f61c}
+.auth-input input{color:#f1f6ff}
+.auth-input input::placeholder{color:#7588a5}
+.auth-input input:read-only{color:#9eb0c9}
+.auth-tabs{background:#0a1424;border:1px solid #293b56}
+.auth-tab{color:#9eafc8}
+.auth-tab.selected{background:#1a3155;color:#dceaff;box-shadow:0 3px 12px #0002}
+.auth-submit{min-height:48px;border-radius:13px}
+.btn-primary{background:linear-gradient(110deg,#3478f6,#2563eb);box-shadow:0 8px 20px #2563eb2e}
+.btn-primary:hover{background:linear-gradient(110deg,#4a8aff,#2b6af3)}
+.btn-quiet{color:#c1d0e5}
+.auth-message{border-radius:12px}
+.auth-error{background:#321c2a;color:#ffb5be;border:1px solid #673343}
+.auth-success{background:#0e2e2a;color:#8ce8c2;border:1px solid #1c6959}
+.checkout-summary{background:#0b1628;border:1px solid #2a3c59;border-radius:15px;color:#dfeaff}
+.checkout-summary span{color:#9fb0ca}
+.checkout-summary strong{color:#f2f6ff}
+.checkout-summary b{color:#8ebcff}
+.checkout-qr{background:#0b1628;border:1px solid #293d5c;border-radius:16px;color:#e9f1ff}
+.checkout-qr h3{color:#f3f7ff}
+.checkout-qr p{color:#9eafc8}
+.qr-placeholder{background:#101f35;border:1px dashed #3a5276;color:#b3c6e3}
+.checkout-reference-label{color:#c5d3e7}
+.checkout-reference-label .auth-input{background:#0a1424}
+.checkout-qr-image{background:#fff;border-radius:14px;padding:10px}
+
+/* My Purchases / learning library */
+.mycourses-page .admin-shell{background:linear-gradient(155deg,#101b2d,#0c1626);border:1px solid #263853;border-radius:23px;color:#edf4ff;box-shadow:0 20px 60px #0002}
+.mycourses-page .admin-heading h1{color:#f2f6ff}
+.mycourses-page .admin-heading p{color:#9aabc5}
+.mycourses-page .mycourses-empty{background:#0b1627;border-color:#304563;color:#a0b1ca}
+.mycourses-page .mycourses-empty h2{color:#f1f6ff}
+.mycourses-page .mycourses-empty p{color:#9aabc5}
+.mycourses-page .mycourse-card{background:#142139;border-color:#2a3d5b;color:#eaf2ff;transition:transform .2s,border-color .2s}
+.mycourses-page .mycourse-card:hover{transform:translateY(-2px);border-color:#4a85e8}
+.mycourses-page .mycourse-card.chosen{background:#162e50;border-color:#4d8cf6;box-shadow:0 0 0 2px #3478f61b}
+.mycourses-page .mycourse-card b{color:#f0f5ff}
+.mycourses-page .mycourse-card small{color:#9daec7}
+.mycourses-page .mycourse-card span{color:#8ebcff}
+.mycourses-page .lesson-library{background:#0b1627;border-color:#283b57}
+.mycourses-page .lesson-library h2,.mycourses-page .support-panel h2{color:#f1f6ff}
+.mycourses-page .lesson-library>p{color:#9aabc5}
+.mycourses-page .lesson-row{border-color:#263752}
+.mycourses-page .lesson-type{background:#1a3153;color:#8cbaff}
+.mycourses-page .lesson-copy b{color:#eef4ff}
+.mycourses-page .lesson-copy p{color:#a1b1c8}
+.mycourses-page .support-panel{background:#0b1627;border-color:#283b57}
+.mycourses-page .support-title{color:#8dbaff}
+.mycourses-page .support-title p{color:#9aabc5}
+.mycourses-page .support-messages{background:#08111f;border-color:#263752}
+.mycourses-page .support-messages>p{color:#98aac4}
+.mycourses-page .support-bubble{background:#142139;border-color:#2a3d5b}
+.mycourses-page .support-bubble.user-bubble{background:#17325a;border-color:#2d5c9d}
+.mycourses-page .support-bubble small{color:#9aabc5}
+.mycourses-page .support-bubble p{color:#edf4ff}
+.mycourses-page .support-compose input{background:#0a1424;border-color:#2a3d5b;color:#eef4ff}
+.mycourses-page .support-compose input::placeholder{color:#7588a5}
+.mycourses-page .support-compose input:focus{outline:2px solid #3478f644;border-color:#4b86ed}
+
+/* Admin lesson manager uses the same control-centre styling as the main admin page */
+.admin-page{min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#10213d,#080f1d 52%,#060b14);color:#eaf2ff}
+.admin-page .auth-top{max-width:1050px}
+.admin-page .admin-shell{background:linear-gradient(155deg,#0f1b2e,#0b1525);border:1px solid #263853;border-radius:22px;color:#eaf2ff;box-shadow:0 20px 65px #0003}
+.admin-page .admin-heading h1{color:#f4f7ff}
+.admin-page .admin-heading p,.admin-page .admin-panel>p{color:#9aabc5}
+.admin-page .admin-form label{color:#c5d2e6}
+.admin-page .admin-form input:not([type=checkbox]),.admin-page .admin-form select,.admin-page .admin-form textarea{background:#091424;border-color:#2b3e5b;color:#edf4ff}
+.admin-page .admin-form input::placeholder,.admin-page .admin-form textarea::placeholder{color:#7185a2}
+.admin-page .admin-list{border-color:#263853}
+.admin-page .admin-list-row{border-color:#263853}
+.admin-page .admin-list-row b{color:#eef4ff}
+.admin-page .admin-list-row small,.admin-page .admin-list-row code{color:#9aabc5}
+.admin-page .admin-row-actions button{background:#14233a;border-color:#304564;color:#cfe0ff}
+.admin-page .admin-row-actions .danger-action{background:#2b1821;border-color:#773748;color:#ff9aa7}
+.admin-page .admin-row-actions .approve-action{background:#0d302a;border-color:#1b7059;color:#7ce8bd}
+.admin-page .admin-shortcuts .btn{background:#14233a;color:#d5e3fb;border:1px solid #2b3f5d}
+.admin-page .admin-tabs{border-color:#273a57}
+.admin-page .admin-tab{background:#111e32;border-color:#2b3e5b;color:#aebed6}
+.admin-page .admin-tab.active{background:#1b3762;border-color:#3974d6;color:#c8ddff}
+.admin-page .admin-panel h2{color:#f1f6ff}
+.admin-page .admin-list-title{color:#f1f6ff}
+.admin-page .admin-stats-grid{gap:11px}
+.admin-page .admin-stat-card{background:#111e32;border-color:#293d5a}
+.admin-page .admin-stat-card span{color:#a2b3cc}
+.admin-page .admin-stat-card strong{color:#f1f6ff}
+.admin-page .admin-stat-card.stat-pending{background:#30260f;border-color:#755917}
+.admin-page .admin-stat-card.stat-pending span,.admin-page .admin-stat-card.stat-pending strong{color:#ffdb70}
+.admin-page .admin-quick-actions button{background:#15243b;border-color:#2d415f;color:#dce8fc}
+.admin-page .admin-quick-actions button:first-child{background:linear-gradient(110deg,#3478f6,#2563eb);border-color:#3478f6;color:#fff}
+.admin-page .admin-quick-actions button:hover{filter:brightness(1.12)}
+.admin-page .admin-check{color:#d2def0}
+.admin-page .admin-check input{accent-color:#3478f6}
+.admin-page .admin-row-actions a{color:#91bdff}
+.admin-page .admin-panel a{color:#91bdff}
+@media(min-width:700px){.shop-home{max-width:560px;margin:0 auto;box-shadow:0 0 70px #0003}.shop-bottom-nav{left:50%;right:auto;transform:translateX(-50%);width:min(560px,100%)}}
+@media(max-width:380px){.shop-welcome h1{font-size:21px}.shop-promo{padding:15px}.promo-art{width:82px}.promo-circle{width:59px;height:59px}.shop-product-art{height:108px}.shop-product-info{padding:10px 9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
