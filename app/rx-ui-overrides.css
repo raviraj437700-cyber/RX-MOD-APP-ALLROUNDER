@@ -365,3 +365,182 @@ button,input,textarea,select{font-family:inherit}
  .admin-page .admin-shell{padding:17px 13px}.admin-page .admin-panel{padding:15px}.admin-page .admin-heading{align-items:flex-start;gap:10px;flex-direction:column}
  .shop-bottom-nav .shop-nav-center small{font-size:7px}
 }
+
+
+/* FINAL ADMIN CONTROL CENTER — high-contrast black theme.
+   Keep admin UI static: decorative entrance animations belong on the storefront, not controls. */
+.admin-page{
+  background:#05070c!important;
+  color:#f4f6fb!important;
+  min-height:100vh;
+}
+.admin-page .auth-top{color:#e8edf7}
+.admin-page .auth-back{color:#c5cede!important}
+.admin-page .admin-shell{
+  background:#0b0f17!important;
+  color:#f4f6fb!important;
+  border:1px solid #252d3a!important;
+  box-shadow:0 22px 65px #0008!important;
+}
+.admin-page .admin-heading h1,
+.admin-page .admin-panel h2,
+.admin-page .promo-admin-box h2{color:#f7f8fc!important}
+.admin-page .admin-heading p,
+.admin-page .admin-panel>p,
+.admin-page .promo-admin-box p{color:#b2bdce!important}
+.admin-page .auth-eyebrow{color:#78aaff!important}
+.admin-page .btn,
+.admin-page .btn-quiet,
+.admin-page .admin-shortcuts .btn{
+  color:#edf3ff!important;
+  background:#171e2b!important;
+  border:1px solid #354155!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+.admin-page .btn:hover,
+.admin-page .btn-quiet:hover{background:#202b3d!important;color:#fff!important}
+.admin-page .btn-primary{
+  color:#fff!important;
+  background:#2563eb!important;
+  border-color:#3b82f6!important;
+}
+.admin-page button,
+.admin-page a,
+.admin-page input,
+.admin-page select,
+.admin-page textarea{
+  opacity:1;
+  text-shadow:none;
+}
+.admin-page button:disabled{opacity:.55!important}
+.admin-page .admin-stats-grid{gap:12px}
+.admin-page .admin-stat-card{
+  background:#111824!important;
+  border:1px solid #2a3546!important;
+  color:#f4f6fb!important;
+  box-shadow:0 8px 22px #0003!important;
+}
+.admin-page .admin-stat-card span{color:#b6c2d4!important}
+.admin-page .admin-stat-card strong{color:#fff!important}
+.admin-page .admin-stat-card.stat-pending{
+  background:#211a0d!important;
+  border-color:#80621e!important;
+}
+.admin-page .admin-stat-card.stat-pending span,
+.admin-page .admin-stat-card.stat-pending strong{color:#ffdc75!important}
+.admin-page .admin-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  overflow:visible;
+  border-color:#293446!important;
+}
+.admin-page .admin-tab{
+  flex:0 0 auto;
+  background:#141b27!important;
+  color:#c7d1e0!important;
+  border:1px solid #303d50!important;
+}
+.admin-page .admin-tab.active{
+  background:#1d3764!important;
+  color:#fff!important;
+  border-color:#5489ed!important;
+}
+.admin-page .admin-panel{
+  background:#0f1520!important;
+  color:#edf2fa!important;
+  border:1px solid #293446!important;
+}
+.admin-page .admin-form label,
+.admin-page .admin-check{color:#d5deeb!important}
+.admin-page .admin-form input:not([type=checkbox]),
+.admin-page .admin-form select,
+.admin-page .admin-form textarea,
+.admin-page .promo-admin-box textarea{
+  background:#090e17!important;
+  color:#f4f7fc!important;
+  border:1px solid #354258!important;
+  caret-color:#8bb5ff;
+}
+.admin-page .admin-form input::placeholder,
+.admin-page .admin-form textarea::placeholder,
+.admin-page .promo-admin-box textarea::placeholder{color:#9aa9bd!important;opacity:1}
+.admin-page .admin-form select option{background:#0d1420;color:#f4f7fc}
+.admin-page .admin-form input:focus,
+.admin-page .admin-form select:focus,
+.admin-page .admin-form textarea:focus,
+.admin-page .promo-admin-box textarea:focus{
+  border-color:#6b9fff!important;
+  box-shadow:0 0 0 3px #3b82f633!important;
+  outline:none;
+}
+.admin-page .admin-check{background:#121a27!important;border-color:#303d50!important}
+.admin-page .admin-list{background:#0b111b!important;border-color:#303b4d!important}
+.admin-page .admin-list-row{border-color:#293446!important}
+.admin-page .admin-list-row b{color:#f4f7fc!important}
+.admin-page .admin-list-row small,
+.admin-page .admin-list-row code{color:#b0bdcf!important}
+.admin-page .admin-list-row a,
+.admin-page .admin-panel a{color:#8bb5ff!important}
+.admin-page .admin-row-actions button{
+  background:#192435!important;
+  border-color:#3a4b65!important;
+  color:#e6efff!important;
+}
+.admin-page .admin-row-actions .approve-action{
+  background:#0d2b22!important;
+  border-color:#247456!important;
+  color:#8af0c0!important;
+}
+.admin-page .admin-row-actions .danger-action{
+  background:#2b151b!important;
+  border-color:#7c3544!important;
+  color:#ff9dab!important;
+}
+.admin-page .admin-quick-actions{display:flex;flex-wrap:wrap;gap:9px}
+.admin-page .admin-quick-actions>a,
+.admin-page .admin-quick-actions>button{
+  flex:1 1 150px;
+  min-width:0;
+  min-height:46px;
+  background:#172131!important;
+  color:#edf3ff!important;
+  border:1px solid #34445c!important;
+  font-size:12px;
+}
+.admin-page .admin-quick-actions>a:first-child,
+.admin-page .admin-quick-actions>button:first-child{
+  background:#1d55c8!important;
+  border-color:#3978ee!important;
+  color:#fff!important;
+}
+.admin-page .promo-admin-box{
+  background:#0c131e!important;
+  border-color:#303b4d!important;
+  color:#edf2fa!important;
+}
+.admin-page .auth-message{color:#f5f7fb!important}
+.admin-page .auth-error{background:#35171d!important;border-color:#71323e!important}
+.admin-page .auth-success{background:#102b22!important;border-color:#27694d!important}
+.admin-page .admin-heading,
+.admin-page .admin-shell,
+.admin-page .admin-panel,
+.admin-page .admin-stat-card,
+.admin-page .admin-tab,
+.admin-page .admin-quick-actions,
+.admin-page .admin-list-row{
+  animation:none!important;
+  transition:none!important;
+}
+@media(max-width:650px){
+  .admin-page{padding:12px 9px 28px!important}
+  .admin-page .admin-shell{padding:16px 12px!important;border-radius:18px}
+  .admin-page .admin-heading{align-items:flex-start!important;flex-direction:column!important;gap:12px}
+  .admin-page .admin-heading h1{font-size:28px}
+  .admin-page .admin-heading p{font-size:13px}
+  .admin-page .admin-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}
+  .admin-page .admin-tab{white-space:normal;min-height:44px;padding:10px 8px;font-size:11px}
+  .admin-page .admin-quick-actions>a,
+  .admin-page .admin-quick-actions>button{flex-basis:calc(50% - 8px)}
+}
