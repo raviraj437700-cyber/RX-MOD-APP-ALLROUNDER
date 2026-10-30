@@ -120,6 +120,7 @@ export default function LoginPage() {
         </form>
         {error && <p className="auth-message auth-error" role="alert">{error}</p>}
         {message && <p className="auth-message auth-success" role="status">{message}</p>}
+        <div className="auth-recovery"><Link href="/forgot-password">Forgot password?</Link></div>
         <p className="auth-footnote">Passwords are handled by Supabase Auth. RX MOD never stores plaintext passwords.</p>
       </section>
     </main>
