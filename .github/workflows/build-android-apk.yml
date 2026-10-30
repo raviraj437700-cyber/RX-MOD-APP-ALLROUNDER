@@ -32,7 +32,7 @@ jobs:
       - name: Install Capacitor
         run: |
           npm install
-          npm install @capacitor/core @capacitor/android @capacitor/cli
+          npm install @capacitor/core@6 @capacitor/android@6 @capacitor/cli@6
 
       - name: Generate Android project
         run: |
