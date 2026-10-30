@@ -60,3 +60,44 @@ drop policy if exists "user reads own product access" on public.product_access;
 create policy "user reads own product access" on public.product_access for select to authenticated using (user_id = (select auth.uid()) or (select public.is_rxmod_admin()));
 drop policy if exists "admin manages product access" on public.product_access;
 create policy "admin manages product access" on public.product_access for all to authenticated using ((select public.is_rxmod_admin())) with check ((select public.is_rxmod_admin()));
+
+-- Approval and access grant must be atomic: no approved order without access.
+create or replace function public.admin_review_course_purchase(
+  p_request_id uuid,
+  p_approve boolean,
+  p_admin_note text default null
+) returns void
+language plpgsql
+set search_path = ''
+as $$
+declare
+  v_request public.purchase_requests%rowtype;
+  v_admin uuid := auth.uid();
+begin
+  if v_admin is null or not public.is_rxmod_admin() then
+    raise exception 'Admin access required' using errcode = '42501';
+  end if;
+  select * into v_request from public.purchase_requests where id = p_request_id for update;
+  if not found then raise exception 'Purchase request not found' using errcode = 'P0002'; end if;
+  if v_request.status <> 'pending' then raise exception 'Only pending requests can be reviewed' using errcode = '22023'; end if;
+  update public.purchase_requests
+    set status = case when p_approve then 'approved' else 'rejected' end,
+        reviewed_by = v_admin, reviewed_at = now(),
+        admin_note = nullif(left(coalesce(p_admin_note,''),500),'')
+    where id = p_request_id;
+  if p_approve then
+    insert into public.course_access(user_id,course_id,granted_by,revoked_at)
+    values(v_request.user_id,v_request.course_id,v_admin,null)
+    on conflict (user_id,course_id)
+    do update set granted_by=excluded.granted_by,granted_at=now(),revoked_at=null;
+  end if;
+end;
+$$;
+revoke all on function public.admin_review_course_purchase(uuid,boolean,text) from public, anon;
+grant execute on function public.admin_review_course_purchase(uuid,boolean,text) to authenticated;
+
+create index if not exists products_category_id_idx on public.products(category_id);
+create index if not exists product_requests_product_id_idx on public.product_purchase_requests(product_id);
+create index if not exists product_requests_reviewed_by_idx on public.product_purchase_requests(reviewed_by);
+create index if not exists product_access_product_id_idx on public.product_access(product_id);
+create index if not exists product_access_granted_by_idx on public.product_access(granted_by);
