@@ -20,6 +20,7 @@ export default function AdminPage(){
  if(catRes.error)setError(catRes.error.message);else setCategories(catRes.data||[]);
  if(courseRes.error)setError(courseRes.error.message);else setCourses(courseRes.data||[]);
  if(purchaseRes.error)setError(purchaseRes.error.message);else setPurchases((purchaseRes.data||[]) as unknown as Purchase[]);
+ setTotalUsers(userCountRes.count||0);setTotalSales((salesRes.data||[]).reduce((sum:any,row:any)=>sum+Number(row.amount_paise||0),0));
  if(settingRes.error)setError(settingRes.error.message);else{setSettings(settingRes.data||[]);const rows=settingRes.data||[];const find=(keys:string[])=>rows.find((r:Setting)=>keys.includes(r.key))?.value;setQrUrl(String(find(["payment_qr_url","qr_code_url","upi_qr_url"])||""));setAdminPhone(String(find(["admin_contact","admin_phone","support_phone"])||""));}
  setChecking(false);
  },[sb]);
