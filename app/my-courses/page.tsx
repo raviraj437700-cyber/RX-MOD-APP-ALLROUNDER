@@ -5,7 +5,8 @@ import {ArrowLeft,BookOpen,FileText,PlayCircle,LoaderCircle,LogOut,MessageCircle
 import {getSupabaseBrowserClient} from "@/lib/supabase/client";
 type Lesson={id:string;course_id:string;title:string;content_type:string;content_url:string|null;text_content:string;sort_order:number;is_preview:boolean};
 type Course={id:string;title:string;short_description:string;description:string;thumbnail_url:string|null};
-type ChatMessage={id:string;user_id:string;message:string;sender_role:string;created_at:string};\ntype PurchaseRequest={id:string;course_id:string;amount_paise:number;status:string;payment_reference:string|null;created_at:string;admin_note:string|null;courses?:{title:string}|null};
+type ChatMessage={id:string;user_id:string;message:string;sender_role:string;created_at:string};
+type PurchaseRequest={id:string;course_id:string;amount_paise:number;status:string;payment_reference:string|null;created_at:string;admin_note:string|null;courses?:{title:string}|null};
 export default function MyCoursesPage(){
  const [loading,setLoading]=useState(true),[user,setUser]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[lessons,setLessons]=useState<Lesson[]>([]),[requests,setRequests]=useState<PurchaseRequest[]>([]),[selected,setSelected]=useState<string>(""),[error,setError]=useState(""),[chat,setChat]=useState<ChatMessage[]>([]),[draft,setDraft]=useState(""),[sending,setSending]=useState(false);
  const sb=getSupabaseBrowserClient();
