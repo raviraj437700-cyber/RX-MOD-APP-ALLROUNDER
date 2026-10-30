@@ -1,0 +1,16 @@
+{
+  "appId": "com.rxmod.app",
+  "appName": "RX MOD",
+  "webDir": "www",
+  "server": {
+    "url": "https://rx-mod-app-allrounder-m5xqtjy0u-ravi-6339.vercel.app",
+    "cleartext": false,
+    "allowNavigation": [
+      "*.vercel.app",
+      "*.supabase.co"
+    ]
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}
