@@ -246,3 +246,22 @@ button,input,textarea,select{font-family:inherit}
 .promo-admin-box h2{margin:0 0 7px}.promo-admin-box p{font-size:12px;line-height:1.6;color:#77849a}
 .promo-admin-box textarea{width:100%;padding:12px;border:1px solid #e1e7f0;resize:vertical;margin:8px 0 12px}
 @media(max-width:650px){.admin-page .admin-shell{padding:16px 12px}}
+
+
+/* Light account, purchases and learning screens */
+.auth-page:not(.admin-page){background:#f3f6fa;color:#1d2c46}
+.auth-page:not(.admin-page) .auth-back{color:#53627b}
+.auth-page:not(.admin-page) .auth-card,.mycourses-page .admin-shell{background:#fff;border:1px solid #e7ebf2;color:#1d2c46;box-shadow:0 16px 45px #1d2d480d}
+.auth-page:not(.admin-page) .auth-card h1,.mycourses-page .admin-heading h1,.mycourses-page .support-panel h2,.mycourses-page .lesson-library h2{color:#1d2c46}
+.auth-page:not(.admin-page) .auth-subtitle,.mycourses-page .admin-heading p,.mycourses-page .support-title p{color:#78869b}
+.auth-page:not(.admin-page) .auth-input{background:#fbfcfe;border-color:#e2e7ef;color:#1d2c46}
+.auth-page:not(.admin-page) .auth-input input{color:#1d2c46}
+.mycourses-page .mycourse-card,.mycourses-page .lesson-library,.mycourses-page .support-panel{background:#fbfcfe;border:1px solid #e8ecf3;color:#1d2c46}
+.mycourses-page .mycourse-card b,.mycourses-page .lesson-copy b{color:#1d2c46}
+.mycourses-page .mycourse-card small,.mycourses-page .lesson-copy p,.mycourses-page .lesson-library>p{color:#78869b}
+.mycourses-page .mycourse-card.chosen{background:#fff8e8;border-color:#e7bd51}
+.mycourses-page .support-messages{background:#f6f8fb;border-color:#e7ebf2}
+.mycourses-page .support-bubble{background:#fff;border-color:#e5eaf2}
+.mycourses-page .support-bubble.user-bubble{background:#edf3ff;border-color:#d7e4ff}
+.mycourses-page .support-bubble p{color:#24334d}
+.mycourses-page .support-compose input{background:#fff;border-color:#e0e6ef;color:#1d2c46}
