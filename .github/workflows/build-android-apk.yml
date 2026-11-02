@@ -35,6 +35,12 @@ jobs:
         run: npx cap add android
       - name: Sync Capacitor
         run: npx cap sync android
+      - name: Verify native Capacitor app configuration
+        run: |
+          test -f android/app/src/main/assets/capacitor.config.json
+          grep -q '"server"' android/app/src/main/assets/capacitor.config.json
+          grep -q 'rx-mod-app-allrounder-i8rftvjje-ravi-6339.vercel.app' android/app/src/main/assets/capacitor.config.json
+          find android/app/src/main -name 'MainActivity.*' -print -quit | grep -q .
       - name: Build debug APK
         working-directory: android
         run: ./gradlew assembleDebug
