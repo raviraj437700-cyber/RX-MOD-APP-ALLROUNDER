@@ -6,7 +6,7 @@ import { ArrowRight, BookOpen, Download, FileText, FolderOpen, GraduationCap, Ho
 
 type CourseCard={id:string;title:string;category:string;categoryId:string|null;price:number;description:string;badge:string;thumbnail:string|null;color:string};
 type Category={id:string;name:string;slug:string};
-function categoryIcon(name:string){const n=name.toLowerCase();if(/pdf|document|notes|material/.test(n))return FileText;if(/video|lecture/.test(n))return PlaySquare;if(/digital|product/.test(n))return ShoppingBag;if(/course|class|batch/.test(n))return GraduationCap;return FolderOpen;}
+function categoryIcon(_name:string){return FolderOpen;}
 function categoryTone(index:number){return ["mint","amber","coral","purple","blue"][index%5];}
 export default function Home(){
  const [catalog,setCatalog]=useState<CourseCard[]>([]),[categories,setCategories]=useState<Category[]>([]),[purchasedIds,setPurchasedIds]=useState<string[]>([]),[active,setActive]=useState("all"),[query,setQuery]=useState(""),[selected,setSelected]=useState<CourseCard|null>(null),[loading,setLoading]=useState(true),[error,setError]=useState(""),[profileName,setProfileName]=useState("Student"),[isAdmin,setIsAdmin]=useState(false),[signedIn,setSignedIn]=useState(false),[menu,setMenu]=useState(false);
