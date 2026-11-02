@@ -1,0 +1,71 @@
+name: Build RX MOD ALLROUNDER APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - ui-pdf-match-nov-2026
+    paths:
+      - 'capacitor.config.ts'
+      - 'www/**'
+      - 'package.json'
+      - '.github/workflows/build-android-apk.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-apk:
+    # Pin the runner so an Ubuntu image migration cannot unexpectedly change this build.
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Add Android platform
+        run: npx cap add android
+
+      - name: Sync Capacitor
+        run: npx cap sync android
+
+      - name: Verify native Capacitor configuration
+        run: |
+          test -f android/app/src/main/assets/capacitor.config.json
+          grep -q '"appId": "com.rxmod.allrounder"' android/app/src/main/assets/capacitor.config.json
+          grep -q '"server"' android/app/src/main/assets/capacitor.config.json
+          grep -q 'rx-mod-app-allrounder-i8rftvjje-ravi-6339.vercel.app' android/app/src/main/assets/capacitor.config.json
+          find android/app/src/main -name 'MainActivity.*' -print -quit | grep -q .
+
+      - name: Build debug APK
+        working-directory: android
+        run: ./gradlew clean assembleDebug
+
+      - name: Verify APK is an installable Android application
+        run: |
+          APK="android/app/build/outputs/apk/debug/app-debug.apk"
+          test -s "$APK"
+          BUILD_TOOLS="$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
+          "$BUILD_TOOLS/aapt" dump badging "$APK" | grep -q "package: name='com.rxmod.allrounder'"
+          "$BUILD_TOOLS/aapt" dump badging "$APK" | grep -q "launchable-activity:"
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v5
+        with:
+          name: RX-MOD-ALLROUNDER-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14
