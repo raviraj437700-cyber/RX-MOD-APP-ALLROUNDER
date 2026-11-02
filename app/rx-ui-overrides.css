@@ -357,3 +357,23 @@ p,small,label,input,textarea,select,button{letter-spacing:-.008em}
 .profile-page .profile-links a{min-width:0;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 9px;border:1px solid #2b3e5b;border-radius:13px;background:#14233a;color:#dceaff;font-size:12px;font-weight:650;text-align:center}
 .profile-page .profile-card>.auth-submit{width:100%;justify-content:center}
 @media(max-width:390px){.profile-page .profile-hero{align-items:flex-start;gap:12px}.profile-page .profile-avatar{flex-basis:54px;width:54px;height:54px}.profile-page .profile-links{grid-template-columns:1fr}}
+
+
+/* Force visible, consistent category icons on every category tile */
+.shop-categories .shop-category>span.shop-category-icon{
+  width:100%;max-width:53px;aspect-ratio:1;min-height:53px;
+  display:grid!important;place-items:center!important;
+  border-radius:16px!important;
+  background:linear-gradient(145deg,#7c3aed,#5b21b6)!important;
+  color:#fff!important;
+  box-shadow:0 6px 16px rgba(91,33,182,.2)!important;
+}
+.shop-categories .shop-category>span.shop-category-icon svg{
+  display:block!important;width:24px!important;height:24px!important;
+  stroke:#fff!important;opacity:1!important;visibility:visible!important;
+}
+.shop-categories .shop-category.tone-mint>span.shop-category-icon{background:linear-gradient(145deg,#7c3aed,#5b21b6)!important}
+.shop-categories .shop-category.tone-amber>span.shop-category-icon{background:linear-gradient(145deg,#7c3aed,#5b21b6)!important}
+.shop-categories .shop-category.tone-coral>span.shop-category-icon{background:linear-gradient(145deg,#7c3aed,#5b21b6)!important}
+.shop-categories .shop-category.tone-purple>span.shop-category-icon{background:linear-gradient(145deg,#7c3aed,#5b21b6)!important}
+.shop-categories .shop-category.tone-blue>span.shop-category-icon{background:linear-gradient(145deg,#7c3aed,#5b21b6)!important}
